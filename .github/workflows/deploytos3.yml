@@ -9,8 +9,10 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+    - name: Checkout source
+      uses: actions/checkout@v4
     - name: Sync files to S3
-    - uses: aws-actions/s3-sync@v2
+      uses: aws-actions/s3-sync@v2
       with:
         args: --acl public-read --follow-symlinks --delete
       env:
